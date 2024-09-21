@@ -104,10 +104,20 @@ _G.packer_plugins = {
     path = "/home/afiq/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codeium.nvim"] = {
+    loaded = true,
+    path = "/home/afiq/.local/share/nvim/site/pack/packer/start/codeium.nvim",
+    url = "https://github.com/Exafunction/codeium.nvim"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/home/afiq/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/home/afiq/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -138,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/afiq/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  nvterm = {
+    loaded = true,
+    path = "/home/afiq/.local/share/nvim/site/pack/packer/start/nvterm",
+    url = "https://github.com/zbirenbaum/nvterm"
   },
   ["packer.nvim"] = {
     loaded = true,

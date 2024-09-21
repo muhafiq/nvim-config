@@ -35,9 +35,18 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },  -- LSP sebagai sumber auto-completion
     { name = 'luasnip' },   -- Snippet sebagai sumber auto-completion
+    { name = 'codeium' }
   }, {
     { name = 'buffer' },    -- Buffer sebagai sumber auto-completion
-  })
+  }),
+  formatting = {
+    format = require('lspkind').cmp_format({
+      mode = "symbol",
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Codeium = "", }
+    })
+  }
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()

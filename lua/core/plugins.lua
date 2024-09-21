@@ -35,6 +35,15 @@ return require('packer').startup(function(use)
       'L3MON4D3/LuaSnip',        -- Snippet engine
     }
   }
+  use {
+    "Exafunction/codeium.nvim",
+    requires = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+  }
+  use 'onsails/lspkind.nvim'
+  use 'zbirenbaum/nvterm'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

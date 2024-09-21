@@ -17,7 +17,7 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+-- vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 -- Comment
 vim.keymap.set("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
@@ -39,3 +39,14 @@ vim.keymap.set('i', 'jk', '<ESC>', { noremap = true, silent = true })
 -- Save with ctrl + s
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>")
 
+-- terminal
+vim.keymap.set("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
+
+-- new terminals
+vim.keymap.set("n", "<leader>h", function()
+  require("nvterm.terminal").new "horizontal"
+end, { desc = "terminal new horizontal term" })
+
+vim.keymap.set("n", "<leader>v", function()
+  require("nvterm.terminal").new "vertical"
+end, { desc = "terminal new vertical window" })
