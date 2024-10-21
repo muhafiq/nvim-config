@@ -44,7 +44,23 @@ return require('packer').startup(function(use)
   }
   use 'onsails/lspkind.nvim'
   use 'zbirenbaum/nvterm'
-
+  use { 
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+  }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
