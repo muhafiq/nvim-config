@@ -24,8 +24,20 @@ local capabilities = require('core.plugin_config.cmp')
 
 lspconfig.ts_ls.setup{
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = function(client, bufnr)
+    -- Disable LS in Javascript
+    if vim.bo[bufnr].filetype == "javascript" then
+      client.server_capabilities.document_formatting = false
+    end
+  end,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
+
+lspconfig.eslint.setup({
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 lspconfig.tailwindcss.setup{
   capabilities = capabilities,
