@@ -61,6 +61,11 @@ return require('packer').startup(function(use)
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   }
+  use {
+    'akinsho/bufferline.nvim', 
+    tag = "*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
