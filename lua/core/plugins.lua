@@ -35,13 +35,13 @@ return require('packer').startup(function(use)
       'L3MON4D3/LuaSnip',        -- Snippet engine
     }
   }
-  use {
-    "Exafunction/codeium.nvim",
-    requires = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-    },
-  }
+  -- use {
+  --   "Exafunction/codeium.nvim",
+  --   requires = {
+  --       "nvim-lua/plenary.nvim",
+  --       "hrsh7th/nvim-cmp",
+  --   },
+  -- }
   use 'onsails/lspkind.nvim'
   use 'zbirenbaum/nvterm'
   use { 
@@ -66,6 +66,7 @@ return require('packer').startup(function(use)
     tag = "*",
     requires = 'nvim-tree/nvim-web-devicons'
   }
+  use 'github/copilot.vim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

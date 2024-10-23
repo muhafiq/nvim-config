@@ -46,6 +46,9 @@ cmp.setup({
       ellipsis_char = '...',
       symbol_map = { Codeium = "", }
     })
+  },
+  completion = {
+    keyword_length = 3
   }
 })
 
