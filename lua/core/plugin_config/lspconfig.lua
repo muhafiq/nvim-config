@@ -20,7 +20,7 @@ end
 
 -- Use on_attach on setup server LSP
 local lspconfig = require('lspconfig')
-local capabilities = require('core.plugin_config.cmp')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.ts_ls.setup{
   capabilities = capabilities,
@@ -48,3 +48,14 @@ lspconfig.volar.setup{
   capabilities = capabilities,
   on_attach = on_attach
 }
+
+lspconfig.html.setup{
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+
+lspconfig.cssls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+

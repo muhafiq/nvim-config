@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-cmdline',     -- Command-line source for nvim-cmp
       'saadparwaiz1/cmp_luasnip',-- Snippet completions
       'L3MON4D3/LuaSnip',        -- Snippet engine
+      'rafamadriz/friendly-snippets', -- Snippets collection
     }
   }
   -- use {
