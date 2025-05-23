@@ -1,0 +1,7 @@
+require('config.treesitter')
+require('config.lsp')
+require('config.rosepine')
+require('config.lualine')
+require('config.telescope')
+require('config.autocompletion')
+require('config.bufferline')
