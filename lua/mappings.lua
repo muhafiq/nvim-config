@@ -50,3 +50,30 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
+
+-- Terminal
+
+-- Terminal horizontal (split bawah)
+map("n", "<leader>h", function()
+  require("toggleterm.terminal").Terminal:new({
+    direction = "horizontal",
+    close_on_exit = true,
+    hidden = true,
+  }):toggle()
+end, { desc = "Toggle horizontal terminal" })
+
+-- Terminal di tab baru
+map("n", "<leader>t", function()
+  require("toggleterm.terminal").Terminal:new({
+    direction = "tab",
+    close_on_exit = true,
+    hidden = true,
+  }):toggle()
+end, { desc = "Toggle terminal in tab" })
+
+-- ctrl+x di terminal mode keluar ke normal mode
+map("t", "<C-x>", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
+
+-- Pindah ke tab page berikutnya dan sebelumnya
+map("n", "<leader><Tab>", ":tabnext<CR>", { desc = "Next tab" })
+map("n", "<leader><S-Tab>", ":tabprevious<CR>", { desc = "Previous tab" })

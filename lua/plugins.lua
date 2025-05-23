@@ -71,6 +71,20 @@ return require('packer').startup(function(use)
       require('nvim-autopairs').setup {}
     end
   }
+  -- formatter for html, css, js and more
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
+  use {
+    "jay-babu/mason-null-ls.nvim",
+    requires = { "williamboman/mason.nvim" }
+  }
+  -- Terminal plugin
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*'
+  }
   -- End plugins here
   if packer_bootstrap then
     require('packer').sync()
