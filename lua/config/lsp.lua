@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "pyright", "ts_ls" },
+  ensure_installed = { "lua_ls", "pyright", "ts_ls", "vue_ls", "emmet_ls", "eslint", "svelte" },
   automatic_installation = true,
   automatic_enable = false
 }
@@ -17,7 +17,7 @@ local default_on_attach = function(client, bufnr)
 end
 
 -- Konfigurasi LSP server
-local servers = { "lua_ls", "pyright", "ts_ls" }
+local servers = { "lua_ls", "pyright", "ts_ls", "svelte" }
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
     on_attach = default_on_attach,
@@ -25,3 +25,28 @@ for _, server in ipairs(servers) do
   }
 end
 
+-- emmet language server
+lspconfig.emmet_language_server.setup {
+  on_attach = default_on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "css",
+    "html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+  },
+}
+
+-- volar or vue language server
+require("lspconfig").volar.setup {
+  on_attach = default_on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+  init_options = {
+    typescript = {
+      tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+    }
+  }
+}
