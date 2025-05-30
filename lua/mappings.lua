@@ -1,7 +1,8 @@
 local map = vim.keymap.set
 
 -- Config
-vim.cmd [[ set number ]]
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -39,7 +40,14 @@ end, { desc = 'Focus NvimTree' })
 -- Bufferline
 map('n', '<Tab>', ':BufferLineCycleNext<CR>', { desc = 'Next buffer' })
 map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
-map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
+-- map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
+
+-- close buffer
+map('n', '<leader>q', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.cmd('bnext')
+  vim.cmd('bd ' .. bufnr)
+end, { desc = 'Close buffer and move to next' })
 
 -- Window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
@@ -71,9 +79,24 @@ map("n", "<leader>t", function()
   }):toggle()
 end, { desc = "Toggle terminal in tab" })
 
--- ctrl+x di terminal mode keluar ke normal mode
-map("t", "<C-x>", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
+--j+k  di terminal mode keluar ke normal mode
+map("t", "jk", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
 
 -- Pindah ke tab page berikutnya dan sebelumnya
 map("n", "<leader><Tab>", ":tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader><S-Tab>", ":tabprevious<CR>", { desc = "Previous tab" })
+
+-- Shortcut untuk find and replace
+vim.keymap.set('n', '<leader>r', function()
+  local find = vim.fn.input("Find word: ")
+  if find == '' then return end
+
+  local replace = vim.fn.input("Replace with: ")
+  if replace == '' then return end
+
+  local confirm = vim.fn.input("Confirm each replacement? (y/n): ")
+
+  local confirm_flag = (confirm == 'y' and 'c') or ''
+  local cmd = string.format("%%s/\\<%s\\>/%s/g%s", find, replace, confirm_flag)
+  vim.cmd(cmd)
+end, { desc = "Interactive find and replace" })
