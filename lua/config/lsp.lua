@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "pyright", "ts_ls", "vue_ls", "emmet_ls", "eslint", "svelte" },
+  ensure_installed = { "lua_ls", "pyright", "ts_ls", "vue_ls", "emmet_ls", "eslint", "svelte", "gopls" },
   automatic_installation = true,
   automatic_enable = false
 }
@@ -17,7 +17,7 @@ local default_on_attach = function(client, bufnr)
 end
 
 -- Konfigurasi LSP server
-local servers = { "lua_ls", "pyright", "ts_ls", "svelte" }
+local servers = { "lua_ls", "pyright", "ts_ls", "svelte", "gopls" }
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
     on_attach = default_on_attach,
